@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<!-- Change this if you want to allow scaling -->
+		<meta name="viewport" content="width=default-width; user-scalable=no" />
+		
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+			
+			<title>TMo</title>
+			<link rel="stylesheet" href="jquery.mobile-1.0a3.min.css" />
+			<script src="jquery-1.5.min.js"></script>
+			<script src="jquery.mobile-1.0a3.min.js"></script>
+			<script src="iscroll-min.js"></script>
+			
+			<!-- iPad/iPhone specific css below, add after your main css >
+			 <link rel="stylesheet" media="only screen and (max-device-width: 1024px)" href="ipad.css" type="text/css" />		
+			 <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="iphone.css" type="text/css" />		
+			 -->
+			<!-- If you application is targeting iOS BEFORE 4.0 you MUST put json2.js from http://www.JSON.org/json2.js into your www directory and include it here -->
+			<script type="text/javascript" charset="utf-8" src="phonegap.0.9.4.min.js"></script>
+			<script type="text/javascript" charset="utf-8">
+				
+				
+				// If you want to prevent dragging, uncomment this section
+				/*
+				 function preventBehavior(e) 
+				 { 
+				 e.preventDefault(); 
+				 };
+				 document.addEventListener("touchmove", preventBehavior, false);
+				 */
+				
+				function onBodyLoad()
+				{
+					document.addEventListener("deviceready",onDeviceReady,false);
+				}
+				
+				/* When this function is called, PhoneGap has been initialized and is ready to roll */
+				function onDeviceReady()
+				{
+					// do your thing!
+					document.addEventListener("orientationChanged", UpdateOrientation);
+				}
+				function UpdateOrientation(e)
+				{
+					switch(e.orientation)
+					{
+						case 0: // portrait
+						case 180: // portrait
+						// do your thing here
+						break;
+						case -90: // landscape
+						case 90: // landscape
+						// do your thing here
+						break;
+					}    
+				}
+				
+				</script>
+			<script src="demoScript.js"></script>
+			</head>
+	<body onload="onBodyLoad()">
+		<div id="demoPage" data-role="page">
+			
+			<div id="#fw-header"  data-role="header" data-position="inline" data-backbtn="false">
+				<h1>TMo</h1>
+				<a id="syncButton" href="#" data-icon="refresh" data-iconpos="notext" class="ui-btn-left">Menu</a>
+				<a id="mainMenuButton" href="#" data-icon="gear" class="ui-btn-right">Menu</a>
+				<div id="mainMenu" data-role="navbar" style="display:none">
+					<ul>
+						<li><a href="#" data-icon="grid" data-iconpos="top" class="ui-btn-active">Journals</a></li>
+						<li><a href="#" data-icon="check" data-iconpos="top">Tasks</a></li>
+						<li><a href="#" data-icon="star" data-iconpos="top">Goals</a></li>
+						<li><a href="#" data-icon="search" data-iconpos="top" >Search</a></li>
+					</ul>
+				</div><!-- /navbar -->
+			</div>
+			
+			<div id="fw-content" data-role="content">
+				<h3>Journals</h3>
+				<div data-role="fieldcontain">
+					<label for="search">For Person:</label>
+					<span id="selectList">
+						<button onclick="createList();get_contacts();$('#contactList').trigger('click');">Lookup</button>
+					</span>
+					<input type="search" />
+				</div>
+				
+				</span>
+				<div data-role="fieldcontain">
+					<textarea data-theme="e">
+					</textarea>
+				</div>
+				<div data-role="controlgroup" data-type="horizontal">
+					<a href="#" data-role="button" data-theme="b">Save</a>
+				</div>
+				
+			</div><!-- /content -->
+		</div><!-- /page -->
+		
+	</body>
+</html>
